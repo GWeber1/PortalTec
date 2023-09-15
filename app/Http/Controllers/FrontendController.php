@@ -13,6 +13,9 @@ class FrontendController extends Controller
         $software = DB::table('posts')->where('category_id', 'LIKE', '%6%')->orderBy('pid', 'DESC')->get();
         $celulares = DB::table('posts')->where('category_id', 'LIKE', '%7%')->orderBy('pid', 'DESC')->get();
         $hardware = DB::table('posts')->where('category_id', 'LIKE', '%2%')->orderBy('pid', 'DESC')->get();
+        $internet = DB::table('posts')->where('category_id', 'LIKE', '%1%')->orderBy('pid', 'DESC')->get();
+        $eletronicos = DB::table('posts')->where('category_id', 'LIKE', '%9%')->orderBy('pid', 'DESC')->get();
+        $maisnoticias = DB::table('posts')->where('category_id', 'LIKE', '%8%')->orderBy('pid', 'DESC')->get();
         $categorias = DB::table('categories')->where('status', 'Ativo')->get()->all();
         $configuracoes = DB::table('settings')->first();
         if ($configuracoes) {
@@ -30,7 +33,10 @@ class FrontendController extends Controller
                                         'icons' => $icons,
                                         'software' => $software,
                                         'celulares' => $celulares,
-                                        'hardware' => $hardware]);
+                                        'hardware' => $hardware,
+                                        'internet' => $internet,
+                                        'eletronicos' => $eletronicos,
+                                        'maisnoticias' => $maisnoticias]);
     }
 
     public function category() {
