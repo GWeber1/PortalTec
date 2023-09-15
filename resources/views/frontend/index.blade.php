@@ -183,320 +183,134 @@
 			
 			<div class="col-md-12">
 				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px; margin-top:30px;">
-				<div class="col-md-12">
-				<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">TOPICO</span></h3>
+					<div class="col-md-12">
+						<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">INTERNET DAS COISAS</span></h3>
+					</div>
+				<div class="col-md-6">
+					@foreach($internet as $key=>$i)
+						@if($key == 0)
+							<a href="{{url('article')}}/{{$i->slug}}"><img src="{{url('storage')}}/{{$i->image}}" style="width: 100%; margin-bottom:15px;" /></a>
+							<h3><a href="{{url('article')}}/{{$i->slug}}">{{$i->title}}</a></h3>
+							<p align="justify">{!!substr($i->description,0,300)!!}</p>
+							<a href="{{url('article')}}/{{$i->slug}}">Saiba mais &raquo;</a>
+						@endif
+					@endforeach
 				</div>
 				<div class="col-md-6">
-					<img src="{{url('images/iphone-500291_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-					<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-				<div class="col-md-6">
-					<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/supersonic-fighter-63211_1280-392x272.jpg')}}" width="100%" />
+					@foreach($internet as $key=>$i)
+						@if($key > 0 && $key < 5)
+							<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+								<div class="col-md-4">
+									<div class="row">
+										<img src="{{url('storage')}}/{{$i->image}}" width="100%" />
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="row" style="padding-left:10px;">
+										<h4><a href="{{url('article')}}/{{$i->slug}}">{{$i->title}}</a></h4>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/headphones-15600_1280-392x272.jpg')}}" width="100%" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/drone-674238_1280-392x272.jpg')}}" width="100%" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/headphones-15600_1280-392x272.jpg')}}" width="100%" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>    
+						@endif
+					@endforeach 
 				</div>
 			</div>
-			</div>
-			
-			<div class="col-md-12 image-gallery">
-				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-					<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">TOPICO</span></h3>
-					<img src="{{url('images/basketball-95607_1280-392x272.jpg')}}" /><img src="{{url('images/beauty-666605_1920-392x272.jpg')}}" /><img src="{{url('images/drone-674238_1280-392x272.jpg')}}" /><img src="{{url('images/football-622873_1280-300x205.jpg')}}" /><img src="{{url('images/headphones-15600_1280-392x272.jpg')}}" />
-				</div>
-			</div>
-			
-			<div class="col-md-12">
-			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-				<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">TOPICO</span></h3>
-				<div class="row" style="margin-bottom:30px;">
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				</div>
-				<div class="row" style="margin-bottom:30px;">
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				</div>
-				<div class="row">
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				<div class="col-md-4">
-					<img src="{{url('images/vehicle-193213_1280-800x445.jpg')}}" width="100%" />
-				</div>
-				</div>
-			</div>
-			</div>
-			</div>
-			</div>
-
-
-			<div class="col-md-4">
-			<div class="col-md-12" style="border:1px solid #ccc; padding:15px;">
-				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-					<div class="col-md-4">
-						<div class="row">
-							<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row" style="padding-left:10px;">
-							<h4>Lorem ipsum dolor sit amet</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-					<div class="col-md-4">
-						<div class="row">
-							<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row" style="padding-left:10px;">
-							<h4>Lorem ipsum dolor sit amet</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-					<div class="col-md-4">
-						<div class="row">
-							<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row" style="padding-left:10px;">
-							<h4>Lorem ipsum dolor sit amet</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-					<div class="col-md-4">
-						<div class="row">
-							<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row" style="padding-left:10px;">
-							<h4>Lorem ipsum dolor sit amet</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-					<div class="col-md-4">
-						<div class="row">
-							<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row" style="padding-left:10px;">
-							<h4>Lorem ipsum dolor sit amet</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-					<div class="col-md-4">
-						<div class="row">
-							<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row" style="padding-left:10px;">
-							<h4>Lorem ipsum dolor sit amet</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12" style="padding-bottom:10px;">
-					<div class="col-md-4">
-						<div class="row">
-							<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row" style="padding-left:10px;">
-							<h4>Lorem ipsum dolor sit amet</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12 text-center" style="padding:30px 0px;">
-				</div>    
-			</div>
-			
-			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 60px 15px; margin-top:30px;">
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
-					<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-						<img src="{{url('images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-						<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-			</div>
-			
+		</div>
+		<div class="col-md-12">
 			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
 				<div class="col-md-12">
-					<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-				</div>          	
-			</div>
-			
-			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 7px 15px; margin-top:30px;">
-				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
-				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-						<img src="{{url('images/bride-301814_1280-392x272.jpg')}}" width="100%" style="margin-bottom:15px;" />
-						<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
+					<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">ELETRÔNICOS</span></h3>	
+				</div>
+				<div class="col-md-6">
+					@foreach($eletronicos as $key=>$e)
+						@if($key == 0)
+							<a href="{{url('article')}}/{{$e->slug}}"><img src="{{url('storage')}}/{{$e->image}}" style="width: 100%; margin-bottom:15px;" /></a>
+							<h3><a href="{{url('article')}}/{{$e->slug}}">{{$e->title}}</a></h3>
+							<p align="justify">{!!substr($e->description,0,300)!!}</p>
+							<a href="{{url('article')}}/{{$e->slug}}">Saiba mais &raquo;</a>
+						@endif
+					@endforeach
+				</div>
+				<div class="col-md-6">
+					@foreach($eletronicos as $key=>$e)
+						@if($key > 0 && $key < 5)
+							<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+								<div class="col-md-4">
+									<div class="row">
+										<img src="{{url('storage')}}/{{$e->image}}" width="100%" />
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="row" style="padding-left:10px;">
+										<h4><a href="{{url('article')}}/{{$e->slug}}">{{$e->title}}</a></h4>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="padding-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-				</div> 
-			</div>
-			<div class="col-md-8">
-				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-					<h3 style="border-bottom:3px solid #1f9df1; padding-bottom:5px;"><span style="padding:6px 12px; background:#1f9df1;">NOS SIGA EM:</span></h3>
-					@foreach($configuracoes->social as $key=>$social)
-						<a href="{{$social}}" class="fa fa-{{$icons[$key]}} social-icon"></a>
+						@endif
 					@endforeach
 				</div>
 			</div>
+		</div>
+			
+		<div class="col-md-12">
+			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+				<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">TÓPICO</span></h3>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+			<div class="col-md-4">
+				<div class="col-md-12" style="border:1px solid #ccc; padding:15px;">
+					<div class="col-md-12">
+						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+						{{-- <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+							@foreach($maisnoticias as $key=>$m)
+								@if($key >= 0 and $key < 7)
+									<div class="col-md-4">
+										<div class="row">
+											<img src="{{url('storage')}}/{{$m->image}}" width="100%" style="margin-left:-15px;" />
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="row" style="padding-left:10px;">
+											<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+										</div>
+									</div>
+								@endif
+							@endforeach
+						</div> --}}
+					</div>
+				</div>
+				
+				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+					<div class="col-md-12">
+						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+					</div>          	
+				</div>
+				
+				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+					<div class="col-md-12">
+						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+					</div>          	
+				</div>
+			
+				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+					<div class="col-md-12">
+						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+					</div>          	
+				</div> 
+
+			</div>
+				<div class="col-md-8">
+					<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+						<h3 style="border-bottom:3px solid #1f9df1; padding-bottom:5px;"><span style="padding:6px 12px; background:#1f9df1;">NOS SIGA EM:</span></h3>
+						@foreach($configuracoes->social as $key=>$social)
+							<a href="{{$social}}" class="fa fa-{{$icons[$key]}} social-icon"></a>
+						@endforeach
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
