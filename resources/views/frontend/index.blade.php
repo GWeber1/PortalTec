@@ -260,58 +260,57 @@
 	</div>
 	</div>
 
-
-			<div class="col-md-4">
-				<div class="col-md-12" style="border:1px solid #ccc; padding:15px;">
-					<div class="col-md-12">
-						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-						{{-- <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-							@foreach($maisnoticias as $key=>$m)
-								@if($key >= 0 and $key < 7)
-									<div class="col-md-4">
-										<div class="row">
-											<img src="{{url('storage')}}/{{$m->image}}" width="100%" style="margin-left:-15px;" />
-										</div>
-									</div>
-									<div class="col-md-8">
-										<div class="row" style="padding-left:10px;">
-											<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
-										</div>
-									</div>
-								@endif
-							@endforeach
-						</div> --}}
-					</div>
-				</div>
-				
-				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-					<div class="col-md-12">
-						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-					</div>          	
-				</div>
-				
-				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-					<div class="col-md-12">
-						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-					</div>          	
-				</div>
-			
-				<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-					<div class="col-md-12">
-						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-					</div>          	
-				</div> 
-
+	<div class="col-md-4">
+		<div class="col-md-12" style="border:1px solid #ccc; padding:15px;">
+			<div class="col-md-12">
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+				{{-- <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+					@foreach($maisnoticias as $key=>$m)
+						@if($key >= 0 and $key < 7)
+							<div class="col-md-4">
+								<div class="row">
+									<img src="{{url('storage')}}/{{$m->image}}" width="100%" style="margin-left:-15px;" />
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="row" style="padding-left:10px;">
+									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+								</div>
+							</div>
+						@endif
+					@endforeach
+				</div> --}}
 			</div>
-				<div class="col-md-8">
-					<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-						<h3 style="border-bottom:3px solid #1f9df1; padding-bottom:5px;"><span style="padding:6px 12px; background:#1f9df1;">NOS SIGA EM:</span></h3>
-						@foreach($configuracoes->social as $key=>$social)
-							<a href="{{$social}}" class="fa fa-{{$icons[$key]}} social-icon"></a>
-						@endforeach
-					</div>
-				</div>
+		</div>
+		
+		<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+			<div class="col-md-12">
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+			</div>          	
+		</div>
+		
+		<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+			<div class="col-md-12">
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+			</div>          	
+		</div>
+	
+		<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+			<div class="col-md-12">
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+			</div>          	
+		</div> 
+
+	</div>
+		<div class="col-md-8">
+			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+				<h3 style="border-bottom:3px solid #1f9df1; padding-bottom:5px;"><span style="padding:6px 12px; background:#1f9df1;">NOS SIGA EM:</span></h3>
+				@foreach($configuracoes->social as $key=>$social)
+					<a href="{{$social}}" class="fa fa-{{$icons[$key]}} social-icon"></a>
+				@endforeach
+			</div>
 		</div>
 	</div>
+</div>
 </div>
 </x-frontend>
