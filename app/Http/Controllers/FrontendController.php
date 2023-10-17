@@ -10,12 +10,15 @@ class FrontendController extends Controller
     public function index() {
         $featured = DB::table('posts')->where('is_recente', true)->get();
         $general = DB::table('posts')->where('is_recente', false)->orderBy('pid', 'DESC')->get();
-        $software = DB::table('posts')->where('category_id', 'LIKE', '%6%')->orderBy('pid', 'DESC')->get();
-        $celulares = DB::table('posts')->where('category_id', 'LIKE', '%7%')->orderBy('pid', 'DESC')->get();
-        $hardware = DB::table('posts')->where('category_id', 'LIKE', '%2%')->orderBy('pid', 'DESC')->get();
-        $internet = DB::table('posts')->where('category_id', 'LIKE', '%1%')->orderBy('pid', 'DESC')->get();
-        $eletronicos = DB::table('posts')->where('category_id', 'LIKE', '%9%')->orderBy('pid', 'DESC')->get();
-        $maisnoticias = DB::table('posts')->where('category_id', 'LIKE', '%8%')->orderBy('pid', 'DESC')->get();
+        $software = DB::table('posts')->where('category_id', 'LIKE', '6,%')->orWhere('category_id', 'LIKE', '6')->orderBy('pid', 'DESC')->get();
+        $celulares = DB::table('posts')->where('category_id', 'LIKE', '7,%')->orWhere('category_id', 'LIKE', '7')->orderBy('pid', 'DESC')->get();
+        $hardware = DB::table('posts')->where('category_id', 'LIKE', '2,%')->orWhere('category_id', 'LIKE', '2')->orderBy('pid', 'DESC')->get();
+        $internet = DB::table('posts')->where('category_id', 'LIKE', '1,%')->orWhere('category_id', 'LIKE', '1')->orderBy('pid', 'DESC')->get();
+        $eletronicos = DB::table('posts')->where('category_id', 'LIKE', '9,%')->orWhere('category_id', 'LIKE', '9')->orderBy('pid', 'DESC')->get();
+        $metaverso = DB::table('posts')->where('category_id', 'LIKE', '10,%')->orWhere('category_id', 'LIKE', '10')->orderBy('pid', 'DESC')->get();
+        $criptomoedas = DB::table('posts')->where('category_id', 'LIKE', '11,%')->orWhere('category_id', 'LIKE', '11')->orderBy('pid', 'DESC')->get();
+        $ciberseguranca = DB::table('posts')->where('category_id', 'LIKE', '12,%')->orWhere('category_id', 'LIKE', '12')->orderBy('pid','DESC')->get();
+        $sustentabilidade = DB::table('posts')->where('category_id', 'LIKE', '13,%')->orWhere('category_id', 'LIKE','13')->orderBy('pid', 'DESC')->get();
         $categorias = DB::table('categories')->where('status', 'Ativo')->get()->all();
         $configuracoes = DB::table('settings')->first();
         if ($configuracoes) {
@@ -36,7 +39,10 @@ class FrontendController extends Controller
                                         'hardware' => $hardware,
                                         'internet' => $internet,
                                         'eletronicos' => $eletronicos,
-                                        'maisnoticias' => $maisnoticias]);
+                                        'metaverso' => $metaverso,
+                                        'criptomoedas' => $criptomoedas,
+                                        'ciberseguranca' => $ciberseguranca,
+                                        'sustentabilidade' => $sustentabilidade]);
     }
 
     public function category() {

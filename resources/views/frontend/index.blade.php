@@ -251,7 +251,6 @@
 				</div>
 			</div>
 		</div>
-			
 		<div class="col-md-12">
 			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
 				<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">TÓPICO</span></h3>
@@ -259,13 +258,12 @@
 		</div>
 	</div>
 	</div>
-
 	<div class="col-md-4">
 		<div class="col-md-12" style="border:1px solid #ccc; padding:15px;">
 			<div class="col-md-12">
-				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-				{{-- <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-					@foreach($maisnoticias as $key=>$m)
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">CRIPTOMOEDAS</span></h3>
+				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+					@foreach($criptomoedas as $key=>$m)
 						@if($key >= 0 and $key < 7)
 							<div class="col-md-4">
 								<div class="row">
@@ -279,28 +277,72 @@
 							</div>
 						@endif
 					@endforeach
-				</div> --}}
+				</div>
 			</div>
 		</div>
-		
 		<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
 			<div class="col-md-12">
-				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">CIBERSEGURANÇA</span></h3>
+				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+					@foreach($ciberseguranca as $key=>$m)
+						@if($key >= 0 and $key < 7)
+							<div class="col-md-4">
+								<div class="row">
+									<img src="{{url('storage')}}/{{$m->image}}" width="100%" style="margin-left:-15px;" />
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="row" style="padding-left:10px;">
+									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+								</div>
+							</div>
+						@endif
+					@endforeach
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
+			<div class="col-md-12">
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">SUSTENTABILIDADE TEC</span></h3>
+				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+					@foreach($sustentabilidade as $key=>$m)
+						@if($key >= 0 and $key < 7)
+							<div class="col-md-4">
+								<div class="row">
+									<img src="{{url('storage')}}/{{$m->image}}" width="100%" style="margin-left:-15px;" />
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="row" style="padding-left:10px;">
+									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+								</div>
+							</div>
+						@endif
+					@endforeach
+				</div>
 			</div>          	
 		</div>
-		
 		<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
 			<div class="col-md-12">
-				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
-			</div>          	
-		</div>
-	
-		<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
-			<div class="col-md-12">
-				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MAIS</span></h3>
+				<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">METAVERSO</span></h3>
+				<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+					@foreach($metaverso as $key=>$m)
+						@if($key >= 0 and $key < 7)
+							<div class="col-md-4">
+								<div class="row">
+									<img src="{{url('storage')}}/{{$m->image}}" width="100%" style="margin-left:-15px;" />
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="row" style="padding-left:10px;">
+									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+								</div>
+							</div>
+						@endif
+					@endforeach
+				</div>
 			</div>          	
 		</div> 
-
 	</div>
 		<div class="col-md-8">
 			<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
