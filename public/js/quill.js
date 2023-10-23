@@ -5,6 +5,17 @@ var toolbarOptions = [[{ 'font': [] }],
 [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '+1' }, { 'indent': '-1' }],
 ['link', 'image', 'video', 'code', { 'direction': 'rtl' }]];
 
+var toolbarLideOptions = [[{'font': []}],
+['bold', 'italic', 'underline', 'strike']];
+
+var optionsLide = {
+  modules: {
+    toolbar: toolbarLideOptions
+  },
+  theme: 'snow',
+  placeholder: 'Digite o conteúdo do lide aqui'
+}
+
 var options = {
   modules: {
     toolbar: toolbarOptions
@@ -12,10 +23,15 @@ var options = {
   theme: 'snow',
   placeholder: 'Digite o conteúdo aqui'
 }
+
+var quillLide = new Quill('#editorLide', optionsLide);
 var quill = new Quill('#editor', options);
 
 var form = document.querySelector('form');
 form.onsubmit = function () {
   var description = document.querySelector('input[name=description]');
   description.value = quill.root.innerHTML.trim();
+
+  var lide = document.querySelector('input[name=lide]');
+  lide.value = quillLide.root.innerHTML.trim();
 }

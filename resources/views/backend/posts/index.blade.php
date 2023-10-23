@@ -21,11 +21,17 @@
                 <input type="text" id="post_title" name="title" class="form-control" placeholder="Insira o titulo aqui">				
               </div>
               <div class="form-group">	
-                <input type="text" id="slug" name="slug" class="form-control" placeholder="Insira as palavras chave aqui">				
+                <input type="text" id="slug" name="slug" class="form-control" readonly placeholder="Insira as palavras chave aqui">				
+              </div>
+              <div class="form-group">
+                <div style="background-color:white;">
+                  <input name="lide" type="hidden">
+                  <div class="form-group" id="editorLide" name="textLide"></div>
+                </div>
               </div>
               <div style="background-color: white;">
                 <input name="description" type="hidden">
-                <div class="form-group" id="editor" name="text">
+                <div class="form-group" id="editor" name="textDescription">
                 </div>
               </div>						
               <div class="form-group" id="editor">
