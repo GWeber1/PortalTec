@@ -84,7 +84,7 @@
 						@if($key == 0)
 							<a href="{{url('article')}}/{{$g->slug}}"><img src="{{url('storage')}}/{{$g->image}}" width="100%" style="margin-bottom:15px;" />
 							<h3><a href="{{url('article')}}/{{$g->slug}}">{{$g->title}}</a></h3>
-							<p align="justify">{!!substr($g->description,0,300) !!}</p><a href="{{url('article')}}/{{$g->slug}}">Saiba Mais &raquo;</a>
+							<p align="justify">{!!$g->lide!!}</p><a href="{{url('article')}}/{{$g->slug}}">Saiba Mais &raquo;</a>
 						@endif
 					@endforeach
 				</div>
@@ -128,7 +128,7 @@
 								@if($key == 0)
 									<a href="{{url('article')}}/{{$c->slug}}"><img src="{{url('storage')}}/{{$c->image}}" style="width: 100%; margin-bottom:15px;" /></a>
 									<h3><a href="{{url('article')}}/{{$c->slug}}">{{$c->title}}</a></h3>
-									<p align="justify">{!!substr($c->description,0,300)!!}</p>
+									<p align="justify">{!!$c->lide!!}</p>
 									<a href="{{url('article')}}/{{$c->slug}}">Saiba mais &raquo;</a>
 								@endif
 							@endforeach
@@ -158,7 +158,7 @@
 								@if($key == 0)
 									<a href="{{url('article')}}/{{$h->slug}}"><img src="{{url('storage')}}/{{$h->image}}" style="width: 100%; margin-bottom:15px;" /></a>
 									<h3><a href="{{url('article')}}/{{$h->slug}}">{{$h->title}}</a></h3>
-									<p align="justify">{!!substr($h->description,0,300)!!}</p>
+									<p align="justify">{!!$h->lide!!}</p>
 									<a href="{{url('article')}}/{{$h->slug}}">Saiba mais &raquo;</a>
 								@endif
 							@endforeach					
@@ -191,7 +191,7 @@
 						@if($key == 0)
 							<a href="{{url('article')}}/{{$i->slug}}"><img src="{{url('storage')}}/{{$i->image}}" style="width: 100%; margin-bottom:15px;" /></a>
 							<h3><a href="{{url('article')}}/{{$i->slug}}">{{$i->title}}</a></h3>
-							<p align="justify">{!!substr($i->description,0,300)!!}</p>
+							<p align="justify">{!!$c->lide!!}</p>
 							<a href="{{url('article')}}/{{$i->slug}}">Saiba mais &raquo;</a>
 						@endif
 					@endforeach
@@ -226,7 +226,7 @@
 						@if($key == 0)
 							<a href="{{url('article')}}/{{$e->slug}}"><img src="{{url('storage')}}/{{$e->image}}" style="width: 100%; margin-bottom:15px;" /></a>
 							<h3><a href="{{url('article')}}/{{$e->slug}}">{{$e->title}}</a></h3>
-							<p align="justify">{!!substr($e->description,0,300)!!}</p>
+							<p align="justify">{!!$c->lide!!}</p>
 							<a href="{{url('article')}}/{{$e->slug}}">Saiba mais &raquo;</a>
 						@endif
 					@endforeach
