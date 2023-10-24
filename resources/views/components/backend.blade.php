@@ -11,7 +11,7 @@
   <script type="text/javascript" src="{{url('js/jquery.min.js')}}"></script>
   <script type="text/javascript" src="{{url('js/bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="{{url('js/app.min.js')}}"></script>
-  <script type="text/javascript" src="{{url('js/script.js')}}"></script>
+  <script type="text/javascript" src="{{url('js/scripts.js')}}"></script>
 </head>
 <body>
 
