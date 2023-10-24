@@ -65,8 +65,16 @@
 									<td>
 										<form action="{{route('category.delete', $category->cid)}}" method="post">
 											@csrf
-											<button type="submit" class="btn-delete fa-solid fa-trash"></button>
+											<div class="div-delete fa-solid fa-trash" id="divDelete"></div>
+                  							<div id="overlay" class="overlay"></div>
 											<a href="{{route('category.edit', $category->cid)}}">{{$category->title}}</a>
+											<div id="popupConfirmacao" class="popup">
+												<div class="popup-conteudo">
+												  <p>Tem certeza de que deseja excluir este item?</p>
+												  <button type="submit" id="confirmarExclusao" class="btn btn-success">Sim</button>
+												  <class id="cancelarExclusao" class="btn btn-danger">Não</class>
+												</div>
+											</div>
 										</form>
 									</td>
 									<td>{{$category->status}}</td>

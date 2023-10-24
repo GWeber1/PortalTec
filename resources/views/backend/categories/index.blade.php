@@ -12,6 +12,13 @@
         			{{$mensagemSucesso}}
     			</div>
 				@endisset
+
+				@isset($mensagemErro)
+				<div class="alert alert-error alert-dismissable dade fin">
+					<a href="#" class="close" data-dismiss="alert">&times;</a>
+					{{$mensagemErro}}
+				</div>
+				@endisset
 				<h3>Adicionar nova categoria</h3>
 				<form method="post" action="{{route('category.add')}}">
 					@csrf
@@ -58,8 +65,16 @@
 									<td>
 										<form method="post" action="{{route('category.delete', $category->cid)}}">
 											@csrf
-											<button type="submit" class="btn-delete fa-solid fa-trash"></button>
+											<div class="div-delete fa-solid fa-trash" id="divDelete"></div>
+                  							<div id="overlay" class="overlay"></div>
 											<a href="{{route('category.edit', $category->cid)}}">{{$category->title}}</a>
+											<div id="popupConfirmacao" class="popup">
+												<div class="popup-conteudo">
+												  <p>Tem certeza de que deseja excluir este item?</p>
+												  <button type="submit" id="confirmarExclusao" class="btn btn-success">Sim</button>
+												  <class id="cancelarExclusao" class="btn btn-danger">Não</class>
+												</div>
+											</div>
 										</form>
 									</td>
 									<td>{{$category->status}}</td>
