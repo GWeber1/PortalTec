@@ -57,7 +57,10 @@ class FrontendController extends Controller
         $configuracoes = DB::table('settings')->first();
         $categorias = DB::table('categories')->where('status', 'Ativo')->get()->all();
         $article = DB::table('posts')->where('pid', $pid)->first();
-        $vejamais = DB::table('posts')->where('category_id', 'LIKE', '%' . $article->category_id . '%')->orWhere('category_id', 'LIKE', $article->category_id)->get();
+        $category = explode(',', $article->category_id);
+        $category = $category[0];
+        $vejamais = DB::table('posts')->where('status', '=', 'publicado')->where('category_id', 'LIKE', '%' . $article->category_id . '%')->orWhere('category_id', 'LIKE', $category)->get();
+        $recentes = DB::table('posts')->where('is_recente', true)->get();
         if ($configuracoes) {
             $configuracoes->social = explode(',', $configuracoes->social);
             foreach($configuracoes->social as $social) {
@@ -67,6 +70,6 @@ class FrontendController extends Controller
             }
         }
 
-        return view('frontend.article', ['configuracoes' => $configuracoes, 'categorias' => $categorias, 'article' => $article, 'vejamais' => $vejamais]);
+        return view('frontend.article', ['configuracoes' => $configuracoes, 'categorias' => $categorias, 'article' => $article, 'vejamais' => $vejamais, 'recentes' => $recentes]);
     }
 }
