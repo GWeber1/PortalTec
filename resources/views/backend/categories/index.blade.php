@@ -12,6 +12,13 @@
         			{{$mensagemSucesso}}
     			</div>
 				@endisset
+
+				@isset($mensagemErro)
+				<div class="alert alert-error alert-dismissable dade fin">
+					<a href="#" class="close" data-dismiss="alert">&times;</a>
+					{{$mensagemErro}}
+				</div>
+				@endisset
 				<h3>Adicionar nova categoria</h3>
 				<form method="post" action="{{route('category.add')}}">
 					@csrf
@@ -58,8 +65,29 @@
 									<td>
 										<form method="post" action="{{route('category.delete', $category->cid)}}">
 											@csrf
-											<button type="submit" class="btn-delete fa-solid fa-trash"></button>
+											<button type="button" class="delete-button fa-solid fa-trash botao-transparente" data-toggle="modal" data-target="#confirmation-modal" data-category-id="{{ $category->cid }}"></button>
+                  							<div id="overlay" class="overlay"></div>
 											<a href="{{route('category.edit', $category->cid)}}">{{$category->title}}</a>
+											<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="confirmation-modal-label" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="confirmation-modal-label"><b>Confirmação de Exclusão</b></h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															Tem certeza de que deseja excluir este item?
+														</div>
+														<div class="modal-footer">
+															<input type="hidden" name="category_id" id="category_id" value="">
+															<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+															<button type="submit" class="btn btn-success">Sim, Excluir</button>
+														</div>
+													</div>
+												</div>
+											</div>
 										</form>
 									</td>
 									<td>{{$category->status}}</td>

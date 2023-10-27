@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index() {
         $data = DB::table('categories')->get();
-        return view('backend.categories.index', ['data' => $data, 'mensagemSucesso' => session('mensagem.sucesso'), 'mensagemAlerta' => session('mensagem.alerta')]);
+        return view('backend.categories.index', ['data' => $data, 'mensagemSucesso' => session('mensagem.sucesso'), 'mensagemErro' => session('mensagem.erro'), 'mensagemAlerta' => session('mensagem.alerta')]);
     }
 
     public function add(Request $request) {
@@ -32,10 +32,16 @@ class CategoryController extends Controller
         return to_route('category.index', ['data' => $data])->with('mensagem.sucesso', "Categoria '$request->title' atualizada com sucesso");
     }
 
-    public function delete(int $cid) {
+    public function delete(Request $request) {
+        $cid = $request->category_id;
         $nome = DB::table('categories')->where('cid', $cid)->get(['title'])->first();
-        $dataDelete = DB::table('categories')->where('cid', $cid)->delete();
+        $noticias = DB::table('posts')->where('category_id', 'LIKE', $cid . ',%')->orWhere('category_id', 'LIKE', $cid)->first();
+        if(!is_null($noticias)) {
+            $data = DB::table('categories')->get();
+            return to_route('category.index', ['data' => $data])->with('mensagem.erro', "Categoria possui notícias vinculadas e não pode ser excluída");
+        }
         $data = DB::table('categories')->get();
+        $dataDelete = DB::table('categories')->where('cid', $cid)->delete();
         return to_route('category.index', ['data' => $data])->with('mensagem.sucesso', "Categoria '$nome->title' excluída com sucesso");
     }
 }

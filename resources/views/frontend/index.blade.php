@@ -14,7 +14,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="mynavbar">
 					<ul class="nav nav-justified">
-						<li><a href="#" class="active"><span class="glyphicon glyphicon-home"></span></a></li>
+						<li><a href="{{url('/')}}" class="active"><span class="glyphicon glyphicon-home"></span></a></li>
 						@foreach($categorias as $categoria) 
 						<li><a href="#">{{$categoria->title}}</a></li>
 						@endforeach
@@ -35,7 +35,7 @@
 					@if($key == 0)
 					<div class="col-md-6">
 						<div class="relative">
-							<a href="{{url('article')}}/{{$f->slug}}"><img src="{{url('storage')}}/{{$f->image}}" class="imagem-frontal" />
+							<a href="{{url('article')}}/{{$f->pid}}/{{$f->slug}}"><img src="{{url('storage')}}/{{$f->image}}" class="imagem-frontal" />
 								<span class="caption">{{$f->title}}</span>
 							</a>
 						</div>
@@ -48,7 +48,7 @@
 							@if($key > 0 && $key < 3)
 							<div class="col-md-6">
 								<div class="relative">
-									<a href="{{url('article')}}/{{$f->slug}}"><img src="{{url('storage')}}/{{$f->image}}" class="imagem-recente" />
+									<a href="{{url('article')}}/{{$f->pid}}/{{$f->slug}}"><img src="{{url('storage')}}/{{$f->image}}" class="imagem-recente" />
 										<span class="caption">{{$f->title}}</span>
 									</a>
 								</div>
@@ -61,7 +61,7 @@
 							@if($key > 3 && $key < 6)
 							<div class="col-md-6">
 								<div class="relative">
-									<a href="{{url('article')}}/{{$f->slug}}"><img src="{{url('storage')}}/{{$f->image}}" class="imagem-recente" />
+									<a href="{{url('article')}}/{{$f->pid}}/{{$f->slug}}"><img src="{{url('storage')}}/{{$f->image}}" class="imagem-recente" />
 										<span class="caption">{{$f->title}}</span>
 									</a>
 								</div>
@@ -82,9 +82,9 @@
 				<div class="col-md-6">
 					@foreach($general as $key=>$g)
 						@if($key == 0)
-							<a href="{{url('article')}}/{{$g->slug}}"><img src="{{url('storage')}}/{{$g->image}}" width="100%" style="margin-bottom:15px;" />
-							<h3><a href="{{url('article')}}/{{$g->slug}}">{{$g->title}}</a></h3>
-							<p align="justify">{!!$g->lide!!}</p><a href="{{url('article')}}/{{$g->slug}}">Saiba Mais &raquo;</a>
+							<a href="{{url('article')}}/{{$g->pid}}/{{$g->slug}}"><img src="{{url('storage')}}/{{$g->image}}" width="100%" style="margin-bottom:15px;" />
+							<h3><a href="{{url('article')}}/{{$g->pid}}/{{$g->slug}}">{{$g->title}}</a></h3>
+							<p align="justify">{!!$g->lide!!}</p><a href="{{url('article')}}/{{$g->pid}}/{{$g->slug}}">Saiba Mais &raquo;</a>
 						@endif
 					@endforeach
 				</div>
@@ -99,7 +99,7 @@
 								</div>
 								<div class="col-md-8">
 									<div class="row">
-										<h4><a href="{{url('article')}}/{{$g->slug}}">{{$g->title}}</a></h4>
+										<h4><a href="{{url('article')}}/{{$g->pid}}/{{$g->slug}}">{{$g->title}}</a></h4>
 									</div>
 								</div>
 							</div>
@@ -113,7 +113,7 @@
 					<div class="flex">
 						@foreach($software->take(5) as $s)
 							<div>
-								<a href="{{url('article')}}/{{$s->slug}}"><img src="{{url('storage')}}/{{$s->image}}" /></a>
+								<a href="{{url('article')}}/{{$s->pid}}/{{$s->slug}}"><img src="{{url('storage')}}/{{$s->image}}" /></a>
 							</div>
 						@endforeach
 					</div>
@@ -126,10 +126,10 @@
 						<h3 style="border-bottom:3px solid #b952c8; padding-bottom:5px;"><span style="padding:6px 12px; background:#b952c8;">CELULARES</span></h3>
 							@foreach($celulares as $key=>$c)
 								@if($key == 0)
-									<a href="{{url('article')}}/{{$c->slug}}"><img src="{{url('storage')}}/{{$c->image}}" style="width: 100%; margin-bottom:15px;" /></a>
-									<h3><a href="{{url('article')}}/{{$c->slug}}">{{$c->title}}</a></h3>
+									<a href="{{url('article')}}/{{$c->pid}}/{{$c->slug}}"><img src="{{url('storage')}}/{{$c->image}}" style="width: 100%; margin-bottom:15px;" /></a>
+									<h3><a href="{{url('article')}}/{{$c->pid}}/{{$c->slug}}">{{$c->title}}</a></h3>
 									<p align="justify">{!!$c->lide!!}</p>
-									<a href="{{url('article')}}/{{$c->slug}}">Saiba mais &raquo;</a>
+									<a href="{{url('article')}}/{{$c->pid}}/{{$c->slug}}">Saiba mais &raquo;</a>
 								@endif
 							@endforeach
 					</div>
@@ -143,7 +143,7 @@
 								</div>
 								<div class="col-md-8">
 									<div class="row">
-										<h4><a href="{{url('artcle')}}/{{$c->slug}}">{{$c->title}}</a></h4>
+										<h4><a href="{{url('artcle')}}/{{$c->pid}}/{{$c->slug}}">{{$c->title}}</a></h4>
 									</div>
 								</div>
 							</div>
@@ -156,10 +156,10 @@
 						<h3 style="border-bottom:3px solid #d95757; padding-bottom:5px;"><span style="padding:6px 12px; background:#d95757;">HARDWARE</span></h3>
 							@foreach($hardware as $key=>$h)
 								@if($key == 0)
-									<a href="{{url('article')}}/{{$h->slug}}"><img src="{{url('storage')}}/{{$h->image}}" style="width: 100%; margin-bottom:15px;" /></a>
-									<h3><a href="{{url('article')}}/{{$h->slug}}">{{$h->title}}</a></h3>
+									<a href="{{url('article')}}/{{$h->pid}}/{{$h->slug}}"><img src="{{url('storage')}}/{{$h->image}}" style="width: 100%; margin-bottom:15px;" /></a>
+									<h3><a href="{{url('article')}}/{{$h->pid}}/{{$h->slug}}">{{$h->title}}</a></h3>
 									<p align="justify">{!!$h->lide!!}</p>
-									<a href="{{url('article')}}/{{$h->slug}}">Saiba mais &raquo;</a>
+									<a href="{{url('article')}}/{{$h->pid}}/{{$h->slug}}">Saiba mais &raquo;</a>
 								@endif
 							@endforeach					
 					</div>
@@ -173,7 +173,7 @@
 								</div>
 								<div class="col-md-8">
 									<div class="row">
-										<h4><a href="{{url('artcle')}}/{{$h->slug}}">{{$h->title}}</a></h4>
+										<h4><a href="{{url('artcle')}}/{{$h->pid}}/{{$h->slug}}">{{$h->title}}</a></h4>
 									</div>
 								</div>
 							</div>
@@ -189,10 +189,10 @@
 				<div class="col-md-6">
 					@foreach($internet as $key=>$i)
 						@if($key == 0)
-							<a href="{{url('article')}}/{{$i->slug}}"><img src="{{url('storage')}}/{{$i->image}}" style="width: 100%; margin-bottom:15px;" /></a>
-							<h3><a href="{{url('article')}}/{{$i->slug}}">{{$i->title}}</a></h3>
+							<a href="{{url('article')}}/{{$i->pid}}/{{$i->slug}}"><img src="{{url('storage')}}/{{$i->image}}" style="width: 100%; margin-bottom:15px;" /></a>
+							<h3><a href="{{url('article')}}/{{$i->pid}}/{{$i->slug}}">{{$i->title}}</a></h3>
 							<p align="justify">{!!$c->lide!!}</p>
-							<a href="{{url('article')}}/{{$i->slug}}">Saiba mais &raquo;</a>
+							<a href="{{url('article')}}/{{$i->pid}}/{{$i->slug}}">Saiba mais &raquo;</a>
 						@endif
 					@endforeach
 				</div>
@@ -207,7 +207,7 @@
 								</div>
 								<div class="col-md-8">
 									<div class="row" style="padding-left:10px;">
-										<h4><a href="{{url('article')}}/{{$i->slug}}">{{$i->title}}</a></h4>
+										<h4><a href="{{url('article')}}/{{$i->pid}}/{{$i->slug}}">{{$i->title}}</a></h4>
 									</div>
 								</div>
 							</div>
@@ -224,10 +224,10 @@
 				<div class="col-md-6">
 					@foreach($eletronicos as $key=>$e)
 						@if($key == 0)
-							<a href="{{url('article')}}/{{$e->slug}}"><img src="{{url('storage')}}/{{$e->image}}" style="width: 100%; margin-bottom:15px;" /></a>
-							<h3><a href="{{url('article')}}/{{$e->slug}}">{{$e->title}}</a></h3>
+							<a href="{{url('article')}}/{{$e->pid}}/{{$e->slug}}"><img src="{{url('storage')}}/{{$e->image}}" style="width: 100%; margin-bottom:15px;" /></a>
+							<h3><a href="{{url('article')}}/{{$e->pid}}/{{$e->slug}}">{{$e->title}}</a></h3>
 							<p align="justify">{!!$c->lide!!}</p>
-							<a href="{{url('article')}}/{{$e->slug}}">Saiba mais &raquo;</a>
+							<a href="{{url('article')}}/{{$e->pid}}/{{$e->slug}}">Saiba mais &raquo;</a>
 						@endif
 					@endforeach
 				</div>
@@ -242,7 +242,7 @@
 								</div>
 								<div class="col-md-8">
 									<div class="row" style="padding-left:10px;">
-										<h4><a href="{{url('article')}}/{{$e->slug}}">{{$e->title}}</a></h4>
+										<h4><a href="{{url('article')}}/{{$e->pid}}/{{$e->slug}}">{{$e->title}}</a></h4>
 									</div>
 								</div>
 							</div>
@@ -272,7 +272,7 @@
 							</div>
 							<div class="col-md-8">
 								<div class="row" style="padding-left:10px;">
-									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+									<h4><a href="{{url('article')}}/{{$m->pid}}/{{$m->slug}}">{{$m->title}}</a></h4>
 								</div>
 							</div>
 						@endif
@@ -293,7 +293,7 @@
 							</div>
 							<div class="col-md-8">
 								<div class="row" style="padding-left:10px;">
-									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+									<h4><a href="{{url('article')}}/{{$m->pid}}/{{$m->slug}}">{{$m->title}}</a></h4>
 								</div>
 							</div>
 						@endif
@@ -314,7 +314,7 @@
 							</div>
 							<div class="col-md-8">
 								<div class="row" style="padding-left:10px;">
-									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+									<h4><a href="{{url('article')}}/{{$m->pid}}/{{$m->slug}}">{{$m->title}}</a></h4>
 								</div>
 							</div>
 						@endif
@@ -335,7 +335,7 @@
 							</div>
 							<div class="col-md-8">
 								<div class="row" style="padding-left:10px;">
-									<h4><a href="{{url('article')}}/{{$m->slug}}">{{$m->title}}</a></h4>
+									<h4><a href="{{url('article')}}/{{$m->pid}}/{{$m->slug}}">{{$m->title}}</a></h4>
 								</div>
 							</div>
 						@endif

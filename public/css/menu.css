@@ -1148,6 +1148,70 @@ a:focus {
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default {
   color: #666666;
 }
+
+.div-delete {
+	cursor: pointer;
+}
+
+.div-delete:hover {
+	color: gray;
+}
+
+.div-cancelar {
+  cursor: pointer;
+}
+
+.div-cancelar:hover {
+  color: gray;
+}
+
+.div-confirmar {
+  cursor: pointer;
+}
+
+.div-confirmar:hover {
+  color: gray;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: fade-in 0.3s ease-in-out;
+}
+
+.popup-conteudo {
+  width: 300px; /* Largura do retângulo */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 991px) {
   .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
     background-color: #f9f9f9;
@@ -4929,4 +4993,9 @@ table.text-center th {
   .table-responsive > .table tr td {
     white-space: normal !important;
   }
+}
+
+.botao-transparente {
+	background-color: transparent; 
+	border: none;
 }
