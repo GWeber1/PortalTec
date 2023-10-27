@@ -45,7 +45,8 @@ class PostsController extends Controller
         return view('backend.posts.allposts', ['posts' => $posts, 'totalPublicado' => $totalPublicado, 'mensagemSucesso' => session('mensagem.sucesso')]);
     }
 
-    public function delete(int $pid) {
+    public function delete(Request $request) {
+        $pid = $request->post_id;
         $nome = DB::table('posts')->where('pid', $pid)->get(['title'])->first();
         $dataDelete = DB::table('posts')->where('pid', $pid)->delete();
         $posts = DB::table('posts')->get();

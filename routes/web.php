@@ -24,12 +24,14 @@ Route::get('/', [FrontendController::class, 'index'])->name('frotend.index');
 
 Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
 
+Route::get('article/{pid}/{slug}', [FrontendController::class, 'article'])->name('frontend.article');
+
 //categorias
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 
 Route::Post('category/add', [CategoryController::class, 'add'])->name('category.add');
 
-Route::post('category/delete/{cid}', [CategoryController::class, 'delete'])->name('category.delete');
+Route::post('category/delete', [CategoryController::class, 'delete'])->name('category.delete');
 
 Route::get('category/edit/{cid}', [CategoryController::class, 'edit'])->name('category.edit');
 
@@ -49,7 +51,7 @@ Route::post('posts/add', [PostsController::class, 'add'])->name('posts.add');
 
 Route::get('posts/all', [PostsController::class, 'all'])->name('posts.all');
 
-Route::post('posts/delete/{pid}', [PostsController::class, 'delete'])->name('posts.delete');
+Route::post('posts/delete', [PostsController::class, 'delete'])->name('posts.delete');
 
 Route::get('posts/edit/{pid}', [PostsController::class, 'edit'])->name('posts.edit');
 

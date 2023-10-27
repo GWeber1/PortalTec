@@ -249,3 +249,12 @@ h4{
 	height: 10px;
 	background-color: red;
 }
+
+.botao-transparente {
+	background-color: transparent; 
+	border: none;
+}
+
+.also-like {
+	color: #333;
+}

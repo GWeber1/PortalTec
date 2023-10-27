@@ -32,10 +32,11 @@ class CategoryController extends Controller
         return to_route('category.index', ['data' => $data])->with('mensagem.sucesso', "Categoria '$request->title' atualizada com sucesso");
     }
 
-    public function delete(int $cid) {
+    public function delete(Request $request) {
+        $cid = $request->category_id;
         $nome = DB::table('categories')->where('cid', $cid)->get(['title'])->first();
-        $noticias = DB::table('posts')->where('category_id', 'LIKE', $cid . ',%');
-        if($noticias->count() > 0) {
+        $noticias = DB::table('posts')->where('category_id', 'LIKE', $cid . ',%')->orWhere('category_id', 'LIKE', $cid)->first();
+        if(!is_null($noticias)) {
             $data = DB::table('categories')->get();
             return to_route('category.index', ['data' => $data])->with('mensagem.erro', "Categoria possui notícias vinculadas e não pode ser excluída");
         }

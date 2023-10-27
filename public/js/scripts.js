@@ -1,15 +1,12 @@
 $(document).ready(function () {
-	const overlay = document.getElementById('overlay');
-	const popupConfirmacao = document.getElementById('popupConfirmacao');
-
-	$('#divDelete').click(function() {
-		overlay.style.display = 'block';
-		popupConfirmacao.style.display = 'block';
+	$('.delete-button').on('click', function () {
+		var categoryId = $(this).data('category-id');
+		$('#category_id').val(categoryId); // Defina o ID no campo oculto
 	});
-	
-	$('#cancelarExclusao').click(function() {
-		overlay.style.display = 'none';
-		popupConfirmacao.style.display = 'none';
+
+	$('.delete-button').on('click', function () {
+		var postId = $(this).data('post-id');
+		$('#post_id').val(postId); // Defina o ID no campo oculto
 	});
 
 	$('.fa-bars').click(function () {
