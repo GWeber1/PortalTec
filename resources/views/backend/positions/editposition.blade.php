@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 title">
-				<h1><i class="fa fa-bars"></i>Categorias</h1>
+				<h1><i class="fa fa-bars"></i>Editar Murais</h1>
 			</div>
 			<div class="col-sm-4 cat-form">
 				@isset($mensagemSucesso)
@@ -11,31 +11,31 @@
         			{{$mensagemSucesso}}
     			</div>
 				@endisset
-
-				@isset($mensagemErro)
-				<div class="alert alert-error alert-dismissable dade fin">
-					<a href="#" class="close" data-dismiss="alert">&times;</a>
-					{{$mensagemErro}}
-				</div>
-				@endisset
-				<h3>Adicionar nova categoria</h3>
-				<form method="post" action="{{route('category.add')}}">
+				<h3>Editar mural</h3>
+				<form method="post" action="{{route('positions.update')}}">
 					@csrf
+					<div hidden class="form-group">
+						<label>Id</label>
+						<input type="text" name="id", id="id", class="form-control", value="{{$pid}}", readonly="">
+					</div>
 					<div class="form-group">
 						<label>Nome</label>
-						<input type="text" name="title" id="title" class="form-control">
-						<p>O nome é como irá aparecer no portal</p>
+						<input type="text" name="nome" id="nome" class="form-control", value="{{$singledata->nome}}">
 					</div>
 
 					<div class="form-group">
 						<label>Status</label>
 						<select class="form-control" name="status">
+							<option>{{$singledata->status}}</option>
+							@if($singledata->status == 'Inativo')
 							<option>Ativo</option>
+							@else
 							<option>Inativo</option>
+							@endif
 						</select>
 					</div>
 					<div class="form-group">
-						<button class="btn btn-primary">Adicionar</button>
+						<button class="btn btn-primary">Editar Mural</button>
 					</div>
 				</form>	
 
@@ -43,12 +43,12 @@
 			</div>
 
 			<div class="col-sm-8 cat-view">
-				@isset($mensagemAlerta)
-    			<div class="alert alert-warning alert-dismissable dade fin">
-        			<a href="#" class="close" data-dismiss="alert">&times;</a>
-        			{{$mensagemAlerta}}
-    			</div>
-				@endisset
+				<div class="row">
+					@csrf
+					<div class="col-sm-4">
+						<input type="text" id="search" name="search" class="form-control" placeholder="Pesquisar">
+					</div>	
+				</div>
 				<div class="content">
 					<table class="table table-striped">
 						<thead>
@@ -59,14 +59,14 @@
 						</thead>
 						<tbody>
 							@if(count($data) > 0)
-								@foreach($data as $category)
+								@foreach($data as $position)
 								<tr>
 									<td>
-										<form method="post" action="{{route('category.delete', $category->cid)}}">
+										<form action="{{route('positions.delete')}}" method="post" id="delete-form-{{$position->pid}}">
 											@csrf
-											<button type="button" class="delete-button fa-solid fa-trash botao-transparente" data-toggle="modal" data-target="#confirmation-modal" data-category-id="{{ $category->cid }}"></button>
+											<button type="button" class="delete-button fa-solid fa-trash botao-transparente" data-toggle="modal" data-target="#confirmation-modal" data-position-id="{{ $position->pid }}"></button>
                   							<div id="overlay" class="overlay"></div>
-											<a href="{{route('category.edit', $category->cid)}}">{{$category->title}}</a>
+											<a href="{{route('positions.edit', $position->pid)}}">{{$position->nome}}</a>
 											<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="confirmation-modal-label" aria-hidden="true">
 												<div class="modal-dialog" role="document">
 													<div class="modal-content">
@@ -80,7 +80,7 @@
 															Tem certeza de que deseja excluir este item?
 														</div>
 														<div class="modal-footer">
-															<input type="hidden" name="category_id" id="category_id" value="">
+															<input type="hidden" name="position_id" id="position_id" value="">
 															<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 															<button type="submit" class="btn btn-success">Sim, Excluir</button>
 														</div>
@@ -89,7 +89,7 @@
 											</div>
 										</form>
 									</td>
-									<td>{{$category->status}}</td>
+									<td>{{$position->status}}</td>
 								</tr>
 								@endforeach
 								@else
@@ -97,7 +97,7 @@
 									<td colspan="3">Não há dados encontrados</td>
 								</tr>
 							@endif
-						</tbody>
+						</tbody>					
 					</table>
 				</div>					
 			</div>
