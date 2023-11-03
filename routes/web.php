@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PositionsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
@@ -36,6 +37,17 @@ Route::post('category/delete', [CategoryController::class, 'delete'])->name('cat
 Route::get('category/edit/{cid}', [CategoryController::class, 'edit'])->name('category.edit');
 
 Route::post('category/update', [CategoryController::class, 'update'])->name('category.update');
+
+//posicoes
+Route::get('positions', [PositionsController::class, 'index'])->name('positions.index');
+
+Route::post('positions/add', [PositionsController::class, 'add'])->name('positions.add');
+
+Route::post('positions/delete', [PositionsController::class, 'delete'])->name('positions.delete');
+
+Route::get('positions/edit/{pid}', [PositionsController::class, 'edit'])->name('positions.edit');
+
+Route::post('positions/update', [PositionsController::class, 'update'])->name('positions.update');
 
 //settings
 Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
