@@ -1,8 +1,8 @@
-<x-backend title="Categorias">
+<x-backend title="Murais">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 title">
-				<h1><i class="fa fa-bars"></i>Categorias</h1>
+				<h1><i class="fa fa-bars"></i>Murais</h1>
 			</div>
 			<div class="col-sm-4 cat-form">
 				@isset($mensagemSucesso)
@@ -18,13 +18,12 @@
 					{{$mensagemErro}}
 				</div>
 				@endisset
-				<h3>Adicionar nova categoria</h3>
-				<form method="post" action="{{route('category.add')}}">
+				<h3>Adicionar novo mural</h3>
+				<form method="post" action="{{route('positions.add')}}">
 					@csrf
 					<div class="form-group">
 						<label>Nome</label>
-						<input type="text" name="title" id="title" class="form-control">
-						<p>O nome é como irá aparecer no portal</p>
+						<input type="text" name="nome" id="nome" class="form-control">
 					</div>
 
 					<div class="form-group">
@@ -37,9 +36,7 @@
 					<div class="form-group">
 						<button class="btn btn-primary">Adicionar</button>
 					</div>
-				</form>	
-
-
+				</form>
 			</div>
 
 			<div class="col-sm-8 cat-view">
@@ -59,14 +56,14 @@
 						</thead>
 						<tbody>
 							@if(count($data) > 0)
-								@foreach($data as $category)
+								@foreach($data as $position)
 								<tr>
 									<td>
-										<form method="post" action="{{route('category.delete', $category->cid)}}">
+										<form method="post" action="{{route('positions.delete', $position->pid)}}">
 											@csrf
-											<button type="button" class="delete-button fa-solid fa-trash botao-transparente" data-toggle="modal" data-target="#confirmation-modal" data-category-id="{{ $category->cid }}"></button>
+											<button type="button" class="delete-button fa-solid fa-trash botao-transparente" data-toggle="modal" data-target="#confirmation-modal" data-position-id="{{ $position->pid }}"></button>
                   							<div id="overlay" class="overlay"></div>
-											<a href="{{route('category.edit', $category->cid)}}">{{$category->title}}</a>
+											<a href="{{route('positions.edit', $position->pid)}}">{{$position->nome}}</a>
 											<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="confirmation-modal-label" aria-hidden="true">
 												<div class="modal-dialog" role="document">
 													<div class="modal-content">
@@ -80,7 +77,7 @@
 															Tem certeza de que deseja excluir este item?
 														</div>
 														<div class="modal-footer">
-															<input type="hidden" name="category_id" id="category_id" value="">
+															<input type="hidden" name="position_id" id="position_id" value="">
 															<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 															<button type="submit" class="btn btn-success">Sim, Excluir</button>
 														</div>
@@ -89,7 +86,7 @@
 											</div>
 										</form>
 									</td>
-									<td>{{$category->status}}</td>
+									<td>{{$position->status}}</td>
 								</tr>
 								@endforeach
 								@else

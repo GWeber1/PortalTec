@@ -29,6 +29,7 @@
               <li><a href="{{route('posts.all')}}"><i class="fa fa-eye"></i>Ver Posts</a></li>
               <li><a href="{{route('posts.index')}}"><i class="fa fa-plus-circle"></i>Adicionar Posts</a></li>
               <li><a href="{{route('category.index')}}"><i class="fa fa-plus-circle"></i>Categorias</a></li>
+              <li><a href="{{route('positions.index')}}"><i class="fa fa-plus-circle"></i>Murais</a></li>
             </ul>
         </li>
         <li class="treeview">

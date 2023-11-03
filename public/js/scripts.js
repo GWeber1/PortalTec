@@ -9,6 +9,11 @@ $(document).ready(function () {
 		$('#post_id').val(postId); // Defina o ID no campo oculto
 	});
 
+	$('.delete-button').on('click', function () {
+		var positionId = $(this).data('position-id');
+		$('#position_id').val(positionId); // Defina o ID no campo oculto
+	});
+
 	$('.fa-bars').click(function () {
 		$('.sidebar').toggle();
 	});
