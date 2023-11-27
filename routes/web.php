@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PositionsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
@@ -21,56 +24,98 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//frontend
 Route::get('/', [FrontendController::class, 'index'])->name('frotend.index');
 
-Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('frontend/search', [FrontendController::class, 'search'])->name('frontend.search');
 
 Route::get('article/{pid}/{slug}', [FrontendController::class, 'article'])->name('frontend.article');
 
-//categorias
-Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+Route::get('pages/view/{pageid}/{slug}', [FrontendController::class, 'page'])->name('frontend.page');
 
-Route::Post('category/add', [CategoryController::class, 'add'])->name('category.add');
+Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('frontend.contact-us');
 
-Route::post('category/delete', [CategoryController::class, 'delete'])->name('category.delete');
+Route::post('sendmessage', [FrontendController::class, 'sendMessage'])->name('frontend.sendmessage');
 
-Route::get('category/edit/{cid}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::middleware(['Autenticador'])->group(function() {
+    Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
+    
+    //categorias
+    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 
-Route::post('category/update', [CategoryController::class, 'update'])->name('category.update');
+    Route::Post('category/add', [CategoryController::class, 'add'])->name('category.add');
 
-//posicoes
-Route::get('positions', [PositionsController::class, 'index'])->name('positions.index');
+    Route::post('category/delete', [CategoryController::class, 'delete'])->name('category.delete');
 
-Route::post('positions/add', [PositionsController::class, 'add'])->name('positions.add');
+    Route::get('category/edit/{cid}', [CategoryController::class, 'edit'])->name('category.edit');
 
-Route::post('positions/delete', [PositionsController::class, 'delete'])->name('positions.delete');
+    Route::post('category/update', [CategoryController::class, 'update'])->name('category.update');
 
-Route::get('positions/edit/{pid}', [PositionsController::class, 'edit'])->name('positions.edit');
+    //posicoes
+    Route::get('positions', [PositionsController::class, 'index'])->name('positions.index');
 
-Route::post('positions/update', [PositionsController::class, 'update'])->name('positions.update');
+    Route::post('positions/add', [PositionsController::class, 'add'])->name('positions.add');
 
-//settings
-Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('positions/delete', [PositionsController::class, 'delete'])->name('positions.delete');
 
-Route::post('settings/add', [SettingsController::class, 'add'])->name('settings.add');
+    Route::get('positions/edit/{pid}', [PositionsController::class, 'edit'])->name('positions.edit');
 
-Route::post('settings/update', [SettingsController::class, 'update'])->name('settings.update');
+    Route::post('positions/update', [PositionsController::class, 'update'])->name('positions.update');
 
-//posts
-Route::get('posts', [PostsController::class, 'index'])->name('posts.index');
+    //settings
+    Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
 
-Route::post('posts/add', [PostsController::class, 'add'])->name('posts.add');
+    Route::post('settings/add', [SettingsController::class, 'add'])->name('settings.add');
 
-Route::get('posts/all', [PostsController::class, 'all'])->name('posts.all');
+    Route::post('settings/update', [SettingsController::class, 'update'])->name('settings.update');
 
-Route::post('posts/delete', [PostsController::class, 'delete'])->name('posts.delete');
+    //posts
+    Route::get('posts', [PostsController::class, 'index'])->name('posts.index');
 
-Route::get('posts/edit/{pid}', [PostsController::class, 'edit'])->name('posts.edit');
+    Route::post('posts/add', [PostsController::class, 'add'])->name('posts.add');
 
-Route::post('posts/update', [PostsController::class, 'update'])->name('posts.update');
+    Route::get('posts/all', [PostsController::class, 'all'])->name('posts.all');
+
+    Route::post('posts/delete', [PostsController::class, 'delete'])->name('posts.delete');
+
+    Route::get('posts/edit/{pid}', [PostsController::class, 'edit'])->name('posts.edit');
+
+    Route::post('posts/update', [PostsController::class, 'update'])->name('posts.update');
+
+    //paginas
+    Route::get('pages', [PagesController::class, 'index'])->name('pages.index');
+
+    Route::post('pages/add', [PagesController::class, 'add'])->name('pages.add');
+
+    Route::get('pages/all', [PagesController::class, 'all'])->name('pages.all');
+
+    Route::post('pages/delete', [PagesController::class, 'delete'])->name('pages.delete');
+
+    Route::get('pages/edit/{pageid}', [PagesController::class, 'edit'])->name('pages.edit');
+
+    Route::post('pages/update', [PagesController::class, 'update'])->name('pages.update');
+
+    //users
+    Route::get('users', [UsersController::class, 'index'])->name('users.index');
+
+    Route::post('users/add', [UsersController::class, 'add'])->name('users.add');
+
+    Route::post('users/delete', [UsersController::class, 'delete'])->name('users.delete');
+
+    Route::get('users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+
+    Route::post('users/update', [UsersController::class, 'update'])->name('users.update');
+});
+
+Route::post('/Adminlogout', [AdminController::class, 'destroy'])->middleware('auth')->name('admin.logout');
+
+//messages
+Route::get('messages/all', [MessagesController::class, 'all'])->name('messages.all');
+
+Route::post('messages/delete', [MessagesController::class, 'delete'])->name('messages.delete');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('backend.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -78,8 +123,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-//users
-Route::get('users', [UsersController::class, 'index'])->name('users.index');
 
 require __DIR__.'/auth.php';

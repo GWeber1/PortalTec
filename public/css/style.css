@@ -98,12 +98,35 @@ body {
 	top: 8px;
 	color: #fff;
 }
+
+.tweet-btn {
+	position: relative;
+	top: 5px;
+}
+
+.search-btn-frontend {
+	color: #fff;
+}
+
+.search-btn-frontend:hover {
+	color: #7b7b7b;
+	cursor: pointer;
+}
+.search-bar {
+	background:#242424;
+    text-align: center;
+}
+.search-input {
+    width: 70%;
+    padding: 8px;
+    margin: 5px;
+    box-sizing: border-box;
+  }
 .search input{
 	border:1px solid #249bc6;
 	background:#242424;
 	color:#f1f1f1;
-	margin-top:3px;
-	padding-left:40px;}
+	margin-top:3px;}
 .search .btn{
 	margin-top:3px;
 	margin-top:-35px;
@@ -111,10 +134,8 @@ body {
 .main-menu{
 	background:#242424;
 	padding:4px 0px;
-	height:75px;
-	border-top:5px solid #249bc6;
 	margin-top:30px;
-	margin-bottom:30px;
+	margin-bottom:80px;
 	}	
 .icon-bar{
 	background:#fff;
@@ -255,6 +276,34 @@ h4{
 	border: none;
 }
 
-.also-like {
+.also-like, .view-count h3 {
 	color: #333;
+}
+
+.share-this h3 {
+	color: #333;
+}
+
+#search-output{
+	position: absolute;
+	width: 100%;
+	height: auto;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: #fff;
+	top: 100%;
+	left: 0;
+	display: none;
+	z-index: 2;
+	border: 3px solid #249bc6;
+}
+
+.search-result {
+	list-style: none;
+}
+
+.search-result li a{
+	padding: 0 0 5px;
+	display: block;
+	color: #333;  
 }
