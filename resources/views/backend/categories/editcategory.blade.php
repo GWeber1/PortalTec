@@ -25,6 +25,15 @@
 					</div>
 
 					<div class="form-group">
+						<label>Mural</label>
+						<select class="form-control" name="position_id">
+							@foreach($position as $key=>$p)
+								<option value="{{$p->pid}}" @if($singledata->position_id == $p->pid) selected @endif>{{$p->nome}}</option>
+							@endforeach
+						</select>
+					</div>
+
+					<div class="form-group">
 						<label>Status</label>
 						<select class="form-control" name="status">
 							<option>{{$singledata->status}}</option>

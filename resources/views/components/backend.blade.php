@@ -26,62 +26,44 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{route('posts.all')}}"><i class="fa fa-eye"></i>Ver Posts</a></li>
-              <li><a href="{{route('posts.index')}}"><i class="fa fa-plus-circle"></i>Adicionar Posts</a></li>
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-bookmark"></i> <span>Post</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{route('posts.all')}}"><i class="fa fa-eye"></i>Ver Posts</a></li>
+                  <li><a href="{{route('posts.index')}}"><i class="fa fa-plus-circle"></i>Adicionar Posts</a></li>
+                </ul>
+              </li>
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-file"></i> <span>Página</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{route('pages.all')}}"><i class="fa fa-eye"></i>Ver Páginas</a></li>
+                  <li><a href="{{route('pages.index')}}"><i class="fa fa-plus-circle"></i>Adicionar Páginas</a></li>
+                </ul>
+              </li>
               <li><a href="{{route('category.index')}}"><i class="fa fa-plus-circle"></i>Categorias</a></li>
               <li><a href="{{route('positions.index')}}"><i class="fa fa-plus-circle"></i>Murais</a></li>
+              <li><a href="{{route('users.index')}}"><i class="fa fa-plus-circle"></i>Usuários</a></li>
             </ul>
         </li>
         <li class="treeview">
-            <a href="#">
-              <i class="fa fa-image"></i> <span>Galeria</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-eye"></i>Ver Imagens</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Adicionar Imagens</a></li>
-              <li><a href="#"><i class="fa fa-eye"></i>Ver Videos</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Adicionar Videos</a></li>
-            </ul>
-        </li>
-        <li class="treeview">
-            <a href="#">
-              <i class="fa fa-file"></i> <span>Páginas</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-eye"></i>Todas as Páginas</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Adicionar Pages</a></li>
-            </ul>
-        </li>
-        <li class="treeview">
-            <a href="menu.html">
-              <i class="fa fa-file"></i> <span>Menu</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>            
+          <a href="{{route('messages.all')}}">
+            <i class="fa fa-envelope"></i><span>Mensagens</span>
+          </a>
         </li>
         <li class="treeview">
             <a href="{{route('settings.index')}}">
               <i class="fa fa-gear"></i> <span>Configurações</span>
             </a>
-        </li>
-        <li class="treeview">
-            <a href="#">
-              <i class="fa fa-user-plus"></i> <span>Usuários</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-eye"></i>Todos os Usuários</a></li>
-              <li><a href="{{route('register')}}"><i class="fa fa-plus-circle"></i>Adicionar Usuários</a></li>
-            </ul>
         </li>
         <li class="treeview">
             <a href="#">
@@ -92,8 +74,11 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-edit"></i>Editar Perfil</a></li>
-              <li><a href="login.html"><i class="fa fa-power-off"></i>Sair</a></li>
             </ul>
+            <form action="{{route('admin.logout')}}" method="POST" class="treeview-menu">
+              @csrf
+              <li><button class="logout-btn" type="submit"><i class="fa fa-power-off"></i>Sair</li></button>
+            </form>
         </li>		
 	</ul>
 </div>

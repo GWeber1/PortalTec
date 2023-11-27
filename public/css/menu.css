@@ -26,6 +26,18 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background: #191e23;
+  outline: none;
+  text-decoration: none;
+}
 /* Layout */
 .wrapper {
   min-height: 100%;
@@ -570,6 +582,11 @@ a:focus {
   display: block;
   font-size: 14px;
 }
+.sidebar-menu .treeview-menu > li > button {
+  padding: 5px 5px 5px 15px;
+  display: block;
+  font-size: 14px;
+}
 .sidebar-menu .treeview-menu > li > a > .fa,
 .sidebar-menu .treeview-menu > li > a > .glyphicon,
 .sidebar-menu .treeview-menu > li > a > .ion {
@@ -683,6 +700,10 @@ a:focus {
   text-overflow: clip;
 }
 .sidebar-menu li > a {
+  position: relative;
+}
+
+.sidebar-menu li > button {
   position: relative;
 }
 .sidebar-menu li > a > .pull-right-container {

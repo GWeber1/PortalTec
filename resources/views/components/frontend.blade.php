@@ -6,9 +6,13 @@
 <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet" />
 <link href="{{url('css/style.css')}}" rel="stylesheet"/>
 <script src="{{url('js/jquery.min.js')}}"></script>
+<script src="{{url('js/scripts.js')}}"></script>
 </head>
 
 <body>
+	@php
+		$pages = json_decode(str_replace("&quot;", '"', $pages), true);
+	@endphp
 	<div>
 		<nav class="navbar nav-justified bg-light">
 			<form class="form-inline my-2 my-lg-0 row-cols-4">
@@ -39,6 +43,17 @@
 				<img src="{{url('storage')}}/{{$logo}}" width="100%" alt="logo">
 			@endif
 			<p align="justify">{{$aboutUs}}</p>
+		</div>
+		<div class="col-md-4">
+			<div class="col-md-12">
+				<h3 style="border-bottom:2px solid #ccc;"><span style="border-bottom:2px solid #f00;">Links</span></h3>
+				<ul class="nav">
+					@foreach($pages as $key=>$page)
+						<li><a href="{{route('frontend.page', [$page['pageid'], $page['slug']])}}" class="text-uppercase">{{$page['title']}}</a></li>
+					@endforeach
+						<li><a href="{{route('frontend.contact-us')}}" class="text-uppercase">Fale conosco</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </body>

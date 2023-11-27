@@ -28,6 +28,15 @@
 					</div>
 
 					<div class="form-group">
+						<label>Mural</label>
+						<select name="position_id" class="form-control">
+							@foreach($position as $key=>$p)
+								<option value="{{$p->pid}}">{{$p->nome}}</option>
+							@endforeach
+						</select>
+					</div>
+
+					<div class="form-group">
 						<label>Status</label>
 						<select class="form-control" name="status">
 							<option>Ativo</option>
