@@ -1,10 +1,9 @@
-<x-backend title="Usuários">
+<x-backend title="Categorias">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 title">
-				<h1><i class="fa fa-bars"></i>Usuários</h1>
+				<h1><i class="fa fa-bars"></i>Editar Categorias</h1>
 			</div>
-			
 			<div class="col-sm-4 cat-form">
 				@isset($mensagemSucesso)
     			<div class="alert alert-success alert-dismissable dade fin">
@@ -12,26 +11,24 @@
         			{{$mensagemSucesso}}
     			</div>
 				@endisset
-				
-				@isset($mensagemErro)
-				<div class="alert alert-error alert-dismissable dade fin">
-					<a href="#" class="close" data-dismiss="alert">&times;</a>
-					{{$mensagemErro}}
-				</div>
-				@endisset
 
-				<h3>Adicionar novo usuário</h3>
-				<form method="post" action="{{route('users.add')}}">
+                <h3>Editar usuário</h3>
+				<form method="post" action="{{route('users.update')}}">
 					@csrf
+                    <div hidden class="form-group">
+						<label>Id</label>
+						<input type="text" name="id" id="id" class="form-control" value="{{$id}}" readonly="">
+					</div>
+
 					<div class="form-group">
 						<label>Nome Completo</label>
-						<input type="text" name="name" id="name" class="form-control">
+						<input type="text" name="name" id="name" class="form-control" value="{{$singledata->name}}">
 						<p>O nome é como aparecerá no cadastro</p>
 					</div>
 
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <input type="email" name="email" id="email" class="form-control">
+                        <input type="email" name="email" id="email" class="form-control" value="{{$singledata->email}}">
                         <p>O email será usado como forma de contato e divulgação</p>
                     </div>
 
@@ -49,31 +46,33 @@
 					<div class="form-group">
 						<label>Status</label>
 						<select class="form-control" name="status">
+							<option>{{$singledata->status}}</option>
+							@if($singledata->status == 'Inativo')
 							<option>Ativo</option>
+							@else
 							<option>Inativo</option>
+							@endif
 						</select>
-                        <p>Usuários inativos não podem acessar o portal</p>
 					</div>
 					<div class="form-group">
-						<button class="btn btn-primary">Adicionar Novo Usuário</button>
+						<button class="btn btn-primary">Atualizar Usuário</button>
 					</div>
 				</form>
 			</div>
 
 			<div class="col-sm-8 cat-view">
-				@isset($mensagemAlerta)
-    			<div class="alert alert-warning alert-dismissable dade fin">
-        			<a href="#" class="close" data-dismiss="alert">&times;</a>
-        			{{$mensagemAlerta}}
-    			</div>
-				@endisset
+				<div class="row">
+					@csrf
+					<div class="col-sm-4">
+						<input type="text" id="search" name="search" class="form-control" placeholder="Pesquisar">
+					</div>	
+				</div>
 				<div class="content">
 					<table class="table table-striped">
 						<thead>
 							<tr>
 								<th>Nome</th>
-								<th>Email</th>
-                                <th>Status</th>
+								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -117,7 +116,7 @@
 									<td colspan="3">Não há dados encontrados</td>
 								</tr>
 							@endif
-						</tbody>
+						</tbody>				
 					</table>
 				</div>					
 			</div>

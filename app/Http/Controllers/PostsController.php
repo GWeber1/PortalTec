@@ -19,9 +19,13 @@ class PostsController extends Controller
         } else {
             $isRecente = false;
         }
-        $request['category_id'] = implode(',', $request['category_id']);
+        $category_id = $request['category_id'];
+        unset($request['category_id']);
         $request['is_recente'] = $isRecente;
         $dataInsert = Post::create($request->except(['_token', 'image']));
+        foreach($category_id as $cat) {
+            $dataInsertCategoriesPost = DB::table('categoriespost')->insert(['cid' => $cat, 'pid' => $dataInsert['pid'], 'views' => 0]);
+        }
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('posts', 'public');
             $dataInsert = DB::table('posts')->where('pid', $dataInsert['pid'])->update(['image' => $path]);
@@ -31,36 +35,45 @@ class PostsController extends Controller
 
     public function all() {
         $posts = DB::table('posts')->orderBy('pid', 'desc')->orderby('pid', 'DESC')->paginate(20);
-        foreach($posts as $post) {
-            $categories = explode(',', $post->category_id);
-            foreach($categories as $cat) {
-                $postcat = DB::table('categories')->where('cid', $cat)->value('title');
-                $postcategories[] = $postcat;
-                $postcat = implode(',', $postcategories);
-            }
-            $post->category_id = $postcat;
-            $postcategories = [];
-        }
         $totalPublicado = DB::table('posts')->where('status', 'publicado')->count();
-        return view('backend.posts.allposts', ['posts' => $posts, 'totalPublicado' => $totalPublicado, 'mensagemSucesso' => session('mensagem.sucesso')]);
+        $categoriesposts = DB::table('categoriespost')->get();
+        $title = '';
+        foreach($posts as $post) {
+            $categoriesposts = DB::table('categoriespost')->where('pid', $post->pid)->get();
+            $title = '';
+            foreach($categoriesposts as $categoriespost) {
+                $categorie = DB::table('categories')->where('cid', $categoriespost->cid)->get('title')->first();
+                if($categorie) {
+                    $title .= $categorie->title . '; ';
+                }
+            }
+            $catpost = array('pid' => $post->pid, 'title' => $title);
+            $catposts[] = $catpost;
+        }
+        return view('backend.posts.allposts', ['posts' => $posts,  'catposts' => $catposts, 'totalPublicado' => $totalPublicado, 'mensagemSucesso' => session('mensagem.sucesso')]);
     }
 
     public function delete(Request $request) {
         $pid = $request->post_id;
-        $nome = DB::table('posts')->where('pid', $pid)->get(['title'])->first();
+        $nome = DB::table('posts')->where('pid', $pid)->get(['title_posts'])->first();
         $dataDelete = DB::table('posts')->where('pid', $pid)->delete();
         $posts = DB::table('posts')->get();
-        return to_route('posts.all', ['posts' => $posts])->with('mensagem.sucesso', "Post '$nome->title' excluído com sucesso");
+        return to_route('posts.all', ['posts' => $posts])->with('mensagem.sucesso', "Post '$nome->title_posts' excluído com sucesso");
     }
 
     public function edit(int $pid) {
         $data = DB::table('posts')->where('pid', $pid)->first();
-        $postcat = explode(',', $data->category_id);
+        $postcat = DB::table('categoriespost')->where('pid', $pid)->get('cid')->all();
+        foreach($postcat as $post) {
+            $postarray[] = $post->cid;
+        }
         $categorias = DB::table('categories')->get();
-        return view('backend.posts.edit', ['post' => $data, 'categorias' => $categorias, 'postcat' => $postcat]);
+        return view('backend.posts.edit', ['post' => $data, 'categorias' => $categorias, 'postcat' => $postarray]);
     }
 
     public function update(Request $request) {
+        $category_id = $request['category_id'];
+        unset($request['category_id']);
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('posts', 'public');
         }
@@ -69,11 +82,18 @@ class PostsController extends Controller
         } else {
             $isRecente = false;
         }
-        $request['category_id'] = implode(',', $request['category_id']);
         $request['is_recente'] = $isRecente;
         $dataUpdate = DB::table('posts')->where('pid', $request->pid)->update($request->except(['_token', 'image']));
         if($request->hasFile('image')) {
             $dataUpdate = DB::table('posts')->where('pid', $request->pid)->update(['image' => $path]);
+        }
+        $dadosexcluidos = DB::table('categoriespost')->where('pid', $request->pid)->whereNotIn('cid', $category_id)->delete();
+
+        foreach($category_id as $cat) {
+            $categoria = DB::table('categoriespost')->where('pid', $request->pid)->where('cid', $cat)->first();
+            if(!$categoria) {
+                $dataInsertCategoriesPost = DB::table('categoriespost')->insert(['cid' => $cat, 'pid' => $request->pid]);
+            }
         }
         $post = DB::table('posts')->get();
         return to_route('posts.all', ['posts' => $post])->with('mensagem.sucesso', 'Post editado com sucesso'); 

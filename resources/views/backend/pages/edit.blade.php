@@ -1,11 +1,10 @@
-<x-backend title="Adicionar Post">
+<x-backend title="Editar Página">
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-10 title">
-        <h1><i class="fa fa-bars"></i> Adicionar Novo Post</h1>
+        <h1><i class="fa fa-bars"></i> Editar Página</h1>
       </div>
-
       <div class="col-sm-12">
         @isset($mensagemSucesso)
     			<div class="alert alert-success alert-dismissable dade fin">
@@ -14,24 +13,20 @@
     			</div>
 				@endisset
         <div class="row">
-          <form method="post" action="{{route('posts.add')}}" enctype="multipart/form-data">
+          <form method="post" action="{{route('pages.update')}}" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="pageid" id="pageid" value="{{$page->pageid}}">
             <div class="col-sm-9">
              <div class="form-group">	
-                <input type="text" id="post_title" name="title_posts" class="form-control" placeholder="Insira o titulo aqui">				
+                <input type="text" id="post_title" name="title" class="form-control" placeholder="Insira o titulo aqui" value="{{$page->title}}">				
               </div>
               <div class="form-group">	
-                <input type="text" id="slug" name="slug" class="form-control" readonly placeholder="Insira as palavras chave aqui">				
-              </div>
-              <div class="form-group">
-                <div style="background-color:white;">
-                  <input name="lide" type="hidden">
-                  <div class="form-group" id="editorLide" name="textLide"></div>
-                </div>
+                <input type="text" id="slug" name="slug" class="form-control" readonly placeholder="Insira as palavras chave aqui" value="{{$page->slug}}">				
               </div>
               <div style="background-color: white;">
                 <input name="description" type="hidden">
-                <div class="form-group" id="editor" name="textDescription">
+                <div class="form-group" id="editor" name="text">
+                  {!!$page->description!!}
                 </div>
               </div>						
               <div class="form-group" id="editor">
@@ -51,24 +46,6 @@
                     <button class="btn btn-primary pull-right" id="status" name="status" value="publicado ">Publicar</button>
                   </div>
                 </div>	
-              </div>
-              
-              <div class="content cat-content">
-                <h4>Categorias  <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
-                @foreach($categorias as $categoria)
-                  <p><label for="{{$categoria->cid}}"><input type="checkbox" name="category_id[]" value="{{$categoria->cid}}">{{$categoria->title}}</label></p>
-                @endforeach
-              </div>
-
-              <div class="content cat-content">
-                <h4>Tópico <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
-                <p><label for=""><input type="checkbox" name="is_recente" id="is_recente">Notícia recente</label></p>
-              </div>
-              <div class="content featured-image">
-                <h4>Imagem selecionada <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>	
-                <p><img id="output" style="max-width: 100%;"/></p>
-                <p><input type="file"  accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
-                <p><label for="file" style="cursor: pointer;">Substituir Imagem selecionada</label></p>							
               </div>
             </div>
           </form>

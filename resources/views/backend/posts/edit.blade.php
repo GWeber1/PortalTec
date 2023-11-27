@@ -1,9 +1,9 @@
-<x-backend title="Adicionar Post">
+<x-backend title="Editar Post">
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-10 title">
-        <h1><i class="fa fa-bars"></i> Adicionar Novo Post</h1>
+        <h1><i class="fa fa-bars"></i> Editar Post</h1>
       </div>
       <div class="col-sm-12">
         @isset($mensagemSucesso)
@@ -18,7 +18,7 @@
             <input type="hidden" name="pid" id="pid" value="{{$post->pid}}">
             <div class="col-sm-9">
              <div class="form-group">	
-                <input type="text" id="post_title" name="title" class="form-control" placeholder="Insira o titulo aqui" value="{{$post->title}}">				
+                <input type="text" id="post_title" name="title_posts" class="form-control" placeholder="Insira o titulo aqui" value="{{$post->title_posts}}">				
               </div>
               <div class="form-group">	
                 <input type="text" id="slug" name="slug" class="form-control" readonly placeholder="Insira as palavras chave aqui" value="{{$post->slug}}">				
