@@ -27,11 +27,16 @@ var options = {
 var quillLide = new Quill('#editorLide', optionsLide);
 var quill = new Quill('#editor', options);
 
-var form = document.querySelector('form');
-form.onsubmit = function () {
-  var description = document.querySelector('input[name=description]');
-  description.value = quill.root.innerHTML.trim();
+quill.on('text-change', function() {
+  updateHiddenInput('description', quill);
+});
 
-  var lide = document.querySelector('input[name=lide]');
-  lide.value = quillLide.root.innerHTML.trim();
+quillLide.on('text-change', function() {
+  updateHiddenInput('lide', quillLide);
+});
+
+function updateHiddenInput(inputName, quillInstance) {
+  var hiddenInput = document.querySelector('input[name=' + inputName + ']');
+  hiddenInput.value = quillInstance.root.innerHTML.trim();
+  console.log('VALOR ' + inputName + ': ' + hiddenInput.value);
 }

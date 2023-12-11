@@ -25,12 +25,12 @@
               </div>
               <div class="form-group">
                 <div style="background-color:white;">
-                  <input name="lide" type="hidden">
+                  <input name="lide" id="lide" type="hidden">
                   <div class="form-group" id="editorLide" name="textLide"></div>
                 </div>
               </div>
               <div style="background-color: white;">
-                <input name="description" type="hidden">
+                <input name="description" id="description" type="hidden">
                 <div class="form-group" id="editor" name="textDescription">
                 </div>
               </div>						
@@ -52,14 +52,12 @@
                   </div>
                 </div>	
               </div>
-              
               <div class="content cat-content">
                 <h4>Categorias  <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
                 @foreach($categorias as $categoria)
                   <p><label for="{{$categoria->cid}}"><input type="checkbox" name="category_id[]" value="{{$categoria->cid}}">{{$categoria->title}}</label></p>
                 @endforeach
               </div>
-
               <div class="content cat-content">
                 <h4>Tópico <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
                 <p><label for=""><input type="checkbox" name="is_recente" id="is_recente">Notícia recente</label></p>
