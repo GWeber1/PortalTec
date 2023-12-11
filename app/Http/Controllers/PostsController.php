@@ -24,8 +24,9 @@ class PostsController extends Controller
         $request['is_recente'] = $isRecente;
         $dataInsert = Post::create($request->except(['_token', 'image']));
         foreach($category_id as $cat) {
-            $dataInsertCategoriesPost = DB::table('categoriespost')->insert(['cid' => $cat, 'pid' => $dataInsert['pid'], 'views' => 0]);
+            $dataInsertCategoriesPost = DB::table('categoriespost')->insert(['cid' => $cat, 'pid' => $dataInsert['pid']]);
         }
+        $dataUpdate = DB::table('posts')->where('pid', $dataInsert['pid'])->update(['views' => 0]);
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('posts', 'public');
             $dataInsert = DB::table('posts')->where('pid', $dataInsert['pid'])->update(['image' => $path]);
