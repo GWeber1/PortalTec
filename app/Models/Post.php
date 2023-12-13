@@ -9,5 +9,5 @@ class Post extends Model
 {
     protected $table = 'posts';
     protected $primaryKey = 'pid';
-    protected $fillable = ['title', 'slug', 'lide', 'description', 'image', 'status', 'is_recente'];
+    protected $fillable = ['title_posts', 'slug', 'lide', 'description', 'image', 'status', 'is_recente'];
 }

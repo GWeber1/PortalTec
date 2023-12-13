@@ -25,19 +25,17 @@
               </div>
               <div class="form-group">
                 <div style="background-color:white;">
-                  <input name="lide" type="hidden">
-                  <div class="form-group" id="editorLide" name="textLide">
+                  <input name="lide" type="hidden" value="{{$post->lide}}">
+                  <div class="form-group" name="editorLide" id="editorLide" name="textLide">
                   {!!$post->lide!!}
                   </div>
                 </div>
               </div>
               <div style="background-color: white;">
-                <input name="description" type="hidden">
-                <div class="form-group" id="editor" name="text">
+                <input name="description" type="hidden" value="{{$post->description}}">
+                <div class="form-group" name="editor" id="editor" name="text">
                   {!!$post->description!!}
                 </div>
-              </div>						
-              <div class="form-group" id="editor">
               </div>
             </div>
             <div class="col-sm-3">
