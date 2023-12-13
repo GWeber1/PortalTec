@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function delete(Request $request) {
         $cid = $request->category_id;
         $nome = DB::table('categories')->where('cid', $cid)->get(['title'])->first();
-        $noticias = DB::table('posts')->where('category_id', 'LIKE', $cid . ',%')->orWhere('category_id', 'LIKE', $cid)->first();
+        $noticias = DB::table('categoriespost')->where('cid', $cid)->first();
         $data = DB::table('categories')->orderBy('cid', 'asc')->get();
         if(!is_null($noticias)) {
             return to_route('category.index', ['data' => $data])->with('mensagem.erro', "Categoria possui notícias vinculadas e não pode ser excluída");
