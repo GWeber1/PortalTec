@@ -61,8 +61,9 @@ class FrontendController extends Controller
         ->join('categoriespost', 'posts.pid', 'categoriespost.pid')
         ->whereIn('categoriespost.cid', $categoriespost)
         ->where('posts.pid', '!=', $pid)
+        ->distinct()
         ->get('posts.*');
-        $recentes = DB::table('posts')->where('is_recente', true)->get();
+        $recentes = DB::table('posts')->where('is_recente', true)->where('pid', '!=', $pid)->get();
         if ($configuracoes) {
             $configuracoes->social = explode(',', $configuracoes->social);
             foreach($configuracoes->social as $social) {
