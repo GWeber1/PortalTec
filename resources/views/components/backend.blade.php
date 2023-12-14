@@ -72,12 +72,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-edit"></i>Editar Perfil</a></li>
-            </ul>
             <form action="{{route('admin.logout')}}" method="POST" class="treeview-menu">
               @csrf
-              <li><button class="logout-btn" type="submit"><i class="fa fa-power-off"></i>Sair</li></button>
+              <li><button class="logout-btn" type="submit"><i class="fa fa-power-off"></i> Sair</li></button>
             </form>
         </li>		
 	</ul>
