@@ -119,7 +119,7 @@
 									@if($key == $c->position_id)
 										@foreach($n->take(5) as $images)
 											<div>
-												<a href="{{url('article')}}/{{$images->pid}}/{{$images->slug}}"><img src="{{url('storage')}}/{{$images->image}}" /></a>
+												<a href="{{url('article')}}/{{$images->pid}}/{{$images->slug}}"><img src="{{url('storage')}}/{{$images->image}}" title="{{$images->title_posts}}" /></a>
 											</div>
 										@endforeach
 									@endif

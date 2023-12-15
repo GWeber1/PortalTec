@@ -15,6 +15,11 @@ class CategoryController extends Controller
     }
 
     public function add(Request $request) {
+        $position = DB::table('categories')->where('position_id', $request->position_id)->first();
+        if(!is_null($position)) {
+            $data = DB::table('categories')->orderBy('cid', 'asc')->get();
+            return to_route('category.index', ['data' => $data])->with('mensagem.erro', "Mural já possui uma categoria vinculada");
+        }
         $dataInsert = Category::create($request->except(['_token']));
         $position = DB::table('positions')->where('status', 'Ativo')->get();
         $data = DB::table('categories')->orderBy('cid', 'asc')->get();
